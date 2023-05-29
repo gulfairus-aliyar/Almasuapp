@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:orientation="horizontal"
+    app:cardCornerRadius="10dp"
+    android:background="@drawable/search_bkg"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/profileRequestRv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/category_bkg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageIv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/image" />
+
+        <TextView
+            android:id="@+id/nameServiceTv"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageIv"
+            android:layout_marginStart="18dp"
+            android:hint="simpleTitleRequest"
+            android:textColor="@color/blue_200"
+            android:textColorHint="@color/blue_200"
+            android:textSize="12sp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/skills"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/nameServiceTv"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/lavender_border"
+            android:backgroundTint="@color/blue_200"
+            android:hint="skills"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dateTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="10sp"
+            android:layout_alignParentStart="true"
+            android:text="dd/MM/yyyy"
+            android:layout_below="@id/skills"
+            android:layout_marginStart="18dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/dateTv"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="#000"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Circle" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dateTv"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/profileIv"
+            android:layout_marginTop="5dp"
+            android:hint="userName"
+            android:textColor="@color/blue_200"
+            android:textColorHint="@color/blue_200"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/locationTv"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/profileIv"
+            android:drawableStart="@drawable/location"
+            android:hint="location"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/blue_200"
+            android:textColorHint="@color/blue_200"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

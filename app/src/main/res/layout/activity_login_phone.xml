@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginPhoneActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageButton
+            android:id="@+id/toolbarBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/profileUpdateRl"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/toolbarRl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/shape_toolbar">
+
+        <RelativeLayout
+            android:id="@+id/phoneRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/loginPhoneTv"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="60dp"
+                android:text="Войдите в свою учетную запись с номером телефона"
+                android:textColor="#FF757575"
+                android:textSize="15sp" />
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/phoneCodeTill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginPhoneTv"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:minWidth="60dp"
+                android:minHeight="56dp"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_rememberLastSelection="true"
+                app:ccp_showFlag="true"
+                app:ccp_showNameCode="false" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobileNumTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginPhoneTv"
+                android:layout_marginTop="25dp"
+                android:hint="Номер телефона">
+
+                <EditText
+                    android:id="@+id/mobileNumEt"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="127dp"
+                    android:background="@drawable/lavender_border"
+                    android:backgroundTint="#FFFFFF"
+                    android:inputType="phone"
+                    android:textColor="@color/black"
+                    android:textColorHint="#F8F8F8"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sendPhoneBtn"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/mobileNumTil"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/lavender_border"
+                android:text="Далее" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/OtpInputRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/OtpPhoneTv"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="60dp"
+                android:text="Пожалуйста, введите код, отправленный на ваш номер"
+                android:textColor="#FF757575"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobileOtpTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/OtpPhoneTv"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/mobileOtpEt"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/lavender_border"
+                    android:backgroundTint="#FFFFFF"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:textColor="@color/black"
+                    android:textColorHint="#F8F8F8"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verifyOtpBtn"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/mobileOtpTil"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/lavender_border"
+                android:text="Подтвердить" />
+
+            <TextView
+                android:id="@+id/resendOtpTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/verifyOtpBtn"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:text="Отправить код еще раз"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

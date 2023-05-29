@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "348904395718",
+    "project_id": "almasu-98c4b",
+    "storage_bucket": "almasu-98c4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348904395718:android:6a1574ee5fb7dc04e718c7",
+        "android_client_info": {
+          "package_name": "com.almasu.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348904395718-tdj2gekhlav3nkfgrk9h3bhk4lvh5c5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.almasu.myapplication",
+            "certificate_hash": "3578665c2072bf7effa5807ea559b59de5e40581"
+          }
+        },
+        {
+          "client_id": "348904395718-r2jn9ae6771sf1a6jn97158pn2eu8jvv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf3YjQBNR_cHfXvUT-O-VSflZsmAx3eqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348904395718-r2jn9ae6771sf1a6jn97158pn2eu8jvv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

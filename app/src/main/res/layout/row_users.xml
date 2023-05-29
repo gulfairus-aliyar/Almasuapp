@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageIv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="15dp"
+            android:background="@color/blue_200"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            style="@style/ImageStyle_Circle"/>
+
+        <TextView
+            android:id="@+id/userNameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageIv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:ellipsize="end"
+            android:text="User name"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/emailTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_toEndOf="@id/imageIv"
+            android:layout_below="@id/userNameTv"
+            android:ellipsize="end"
+            android:text="User email address"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

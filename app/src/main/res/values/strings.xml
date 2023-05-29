@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Almasu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="not_have_account">У вас нет учетной записи? <b>Зарегистрироваться</b></string>
+    <string name="not_have_account_register">У вас нет учетной записи? <b>Войти</b></string>
+
+    <string name="toolbar">ToolBar</string>
+
+    <string name="google_map_api_key">AIzaSyApZlZiGoPXakuUT5KPwQMneK9va08ZFro</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+</resources>
