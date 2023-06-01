@@ -53,7 +53,7 @@ class AdCreateActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        val adapterCategories = ArrayAdapter(this, R.layout.row_category_act, Utils.categories)
+        val adapterCategories = ArrayAdapter(this, R.layout.row_category_act, Utils.skills)
         binding.categoryAct.setAdapter(adapterCategories)
 
         imagePickedArrayList = ArrayList()

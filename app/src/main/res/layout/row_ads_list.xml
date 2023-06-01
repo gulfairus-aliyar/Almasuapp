@@ -82,7 +82,7 @@
             app:shapeAppearanceOverlay="@style/ImageStyle_Circle" />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/dateTv"
@@ -100,7 +100,7 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/username"
+            android:layout_below="@id/userName"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/profileIv"
             android:drawableStart="@drawable/location"

@@ -13,12 +13,15 @@ import com.almasu.myapplication.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
+
+    //view binding or respective layout i.e activity_main.xml
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //activity_main.xml = ActivityMainBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -30,14 +33,18 @@ class MainActivity : AppCompatActivity() {
 
         showHomeFragment()
 
+        //handle bottomNv item clicks to navigate between fragments
         binding.bottomNv.setOnItemSelectedListener {item ->
 
             when(item.itemId){
                 R.id.menu_home -> {
+                    //Home item clicked, show HomeFragment
+
                     showHomeFragment()
                     true
                 }
                 R.id.menu_chat -> {
+                    //Chats item clicked, show ChatsFragment
 
                     if (firebaseAuth.currentUser == null){
                         Utils.toast(this, "Требуется вход")

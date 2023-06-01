@@ -3,6 +3,8 @@ package com.almasu.myapplication.fragments
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -62,31 +64,50 @@ class UsersFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        loadAllUsers("All")
+        loadAllUsers()
 
+        binding.searchEt.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, p1: Int, p2: Int, p3: Int) {
+                Log.d(UsersFragment.TAG, "onTextChanged: Query: $s")
+
+                try {
+                    val query = s.toString()
+                    adapterUsers.filter.filter(query)
+                }catch (e: Exception){
+                    Log.e(UsersFragment.TAG, "onTextChanged: ", e)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
     }
 
-    private fun loadAllUsers(uid: String){
-        Log.d(TAG, "loadAllUsers: ")
-
+    private fun loadAllUsers(){
+        //init arrayList
         userArrayList = ArrayList()
 
+        //get all users from firebase database... Firebase DB > Users
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                //clear list before starting adding data into it
                 userArrayList.clear()
-
                 for (ds in snapshot.children){
-                    try {
-                        val modelUsers = ds.getValue(ModelUsers::class.java)
-                        if (modelUsers!!.uid == uid){
-                            userArrayList.add(modelUsers)
-                        }
-                    } catch (e: Exception){
-                        Log.e(TAG, "onDataChange: ", e)
-                    }
+                    val modelUsers = ds.getValue(ModelUsers::class.java)
+
+                    //add to arrayList
+                    userArrayList.add(modelUsers!!)
                 }
+                //setup adapter
                 adapterUsers = AdapterUsers(mContext, userArrayList)
+                //set adapter to recyclerView
                 binding.recyclerView.adapter = adapterUsers
             }
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.almasu.myapplication.FilterAd
 import com.almasu.myapplication.R
 import com.almasu.myapplication.Utils
+import com.almasu.myapplication.activities.ProfileEditActivity
 import com.almasu.myapplication.activities.RequestActivity
 import com.almasu.myapplication.databinding.RowAdsListBinding
 import com.almasu.myapplication.models.ModelAd
@@ -56,28 +57,60 @@ class AdapterAd : RecyclerView.Adapter<AdapterAd.HolderAd>, Filterable{
 
     override fun onBindViewHolder(holder: HolderAd, position: Int) {
         val modelAd = adArrayList[position]
+        val id = modelAd.id
         val uid = modelAd.uid
         val nameService = modelAd.nameService
         val category = modelAd.category
         val address = modelAd.address
-        val username = modelAd.username
+        val username = modelAd.userName
         val profileImageUrl = modelAd.profileImageUrl
         val timestamp = modelAd.timestamp
         val formattedDate = Utils.formatTimestampDate(timestamp)
 
         loadAdFirstImage(modelAd, holder)
+        loadMyInfo(modelAd, holder)
 
         holder.nameServiceTv.text = nameService
         holder.skills.text = category
         holder.locationTv.text = address
         holder.dateTv.text = formattedDate
         holder.username.text = username
-        holder.itemView.setOnClickListener { v ->
+        holder.itemView.setOnClickListener {
            val intent = Intent(context, RequestActivity::class.java)
-            intent.putExtra("uid", uid)
+            intent.putExtra("requestId", id) // will be used to load request details
             context.startActivity(intent)
         }
 
+    }
+
+    private fun loadMyInfo(modelAd: ModelAd, holder: HolderAd){
+        Log.d(TAG, "loadMyInfo: ")
+        val adId = modelAd.uid
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(adId)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val name = "${snapshot.child("name").value}"
+                    val profileImageUrl = "${snapshot.child("profileImageUrl").value}"
+
+                    binding.userName.text = name
+
+                    try {
+                        Glide.with(context)
+                            .load(profileImageUrl)
+                            .placeholder(R.drawable.ic_person)
+                            .into(holder.profileIv)
+                    } catch (e: Exception){
+                        Log.e(ProfileEditActivity.TAG, "onDataChange: ", e)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
     }
 
     private fun loadAdFirstImage(modelAd: ModelAd, holder: HolderAd){
@@ -123,7 +156,7 @@ class AdapterAd : RecyclerView.Adapter<AdapterAd.HolderAd>, Filterable{
         var dateTv = binding.dateTv
         var skills = binding.skills
         var profileIv = binding.profileIv
-        var username = binding.username
+        var username = binding.userName
     }
 
     override fun getFilter(): Filter {

@@ -15,6 +15,7 @@ import com.almasu.myapplication.activities.AdCreateActivity
 import com.almasu.myapplication.activities.ChangePasswordActivity
 import com.almasu.myapplication.activities.DeleteAccountActivity
 import com.almasu.myapplication.activities.MainActivity
+import com.almasu.myapplication.activities.MessageActivity
 import com.almasu.myapplication.activities.ProfileEditActivity
 import com.almasu.myapplication.databinding.FragmentProfileBinding
 import com.bumptech.glide.Glide
@@ -84,10 +85,6 @@ class ProfileFragment : Fragment() {
 
         binding.deleteAccCv.setOnClickListener {
             startActivity(Intent(mContext, DeleteAccountActivity::class.java))
-        }
-
-        binding.messageIb.setOnClickListener {
-            chat()
         }
 
         binding.createAd.setOnClickListener {
@@ -169,10 +166,6 @@ class ProfileFragment : Fragment() {
                 progressDialog.dismiss()
                 Utils.toast(mContext, "Failed to send due to ${e.message}")
             }
-    }
-
-    private fun chat(){
-
     }
 
 }

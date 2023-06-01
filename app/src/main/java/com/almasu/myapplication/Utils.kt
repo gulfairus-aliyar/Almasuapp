@@ -11,7 +11,7 @@ object Utils {
 
     const val AD_STATUS_AVAILABLE = "AVAILABLE"
 
-    val categories = arrayOf(
+    val skills = arrayOf(
         "Админстративная помощь",
         "Альтернативные практики",
         "Архитектор и урбанист",
@@ -161,11 +161,11 @@ object Utils {
         return System.currentTimeMillis()
     }
 
-
     fun formatTimestampDate(timestamp: Long) : String{
         val calendar = Calendar.getInstance(Locale.ENGLISH)
         calendar.timeInMillis = timestamp
 
         return DateFormat.format("dd/MM/yyyy", calendar).toString()
     }
+
 }

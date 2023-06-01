@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--Menu item to show Home Fragment-->
     <item android:id="@+id/menu_home"
         android:title="Главная"
         android:icon="@drawable/ic_home"/>
 
+    <!--Menu item to show Chat Fragment-->
     <item android:id="@+id/menu_chat"
         android:title="Чат"
         android:icon="@drawable/ic_chat"/>
 
+    <!--Menu item disabled(so it will not be clickable), will place FloatingActionButton on above it-->
     <item android:id="@+id/menu_exchange"
         android:title="Обмен"
         android:enabled="false"/>
 
+    <!--Menu item to show Users Fragment-->
     <item android:id="@+id/menu_users"
         android:title="Пользователи"
         android:icon="@drawable/ic_users"/>
 
+    <!--Menu item to show Profile Fragment-->
     <item android:id="@+id/menu_Profile"
         android:title="Профиль"
         android:icon="@drawable/ic_account"/>

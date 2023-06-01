@@ -16,17 +16,17 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MessageAdapter (
     var context: Context,
-    messages: ArrayList<ModelMessage>?,
+    messagesList: ArrayList<ModelMessage>?,
     senderRoom: String,
     receiverRoom: String
 ):RecyclerView.Adapter<RecyclerView.ViewHolder?>()
 {
 
-    lateinit var messages: ArrayList<ModelMessage>
+    lateinit var messagesList: ArrayList<ModelMessage>
     val ITEM_SENT = 1
     val ITEM_RECEIVE = 2
-    val senderRoom: String
-    val receiverRoom: String
+    private val senderRoom: String
+    var receiverRoom: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -44,7 +44,7 @@ class MessageAdapter (
     }
 
     override fun getItemViewType(position: Int): Int {
-        val messages = messages[position]
+        val messages = messagesList[position]
         return if (FirebaseAuth.getInstance().uid == messages.senderId){
             ITEM_SENT
         } else{
@@ -53,13 +53,13 @@ class MessageAdapter (
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val message = messages[position]
+        val message = messagesList[position]
         if (holder.javaClass == SentMsgHolder::class.java){
             val viewHolder = holder as SentMsgHolder
             if (message.message.equals("photo")){
                 viewHolder.binding.image.visibility = View.VISIBLE
                 viewHolder.binding.messageTv.visibility = View.GONE
-                viewHolder.binding.mLinear.visibility = View.VISIBLE
+                viewHolder.binding.mLinear.visibility = View.GONE
                 Glide.with(context)
                     .load(message.imageUrl)
                     .placeholder(R.drawable.placeholder)
@@ -114,7 +114,7 @@ class MessageAdapter (
             if (message.message.equals("photo")){
                 viewHolder.binding.image.visibility = View.VISIBLE
                 viewHolder.binding.messageTv.visibility = View.GONE
-                viewHolder.binding.mLinear.visibility = View.VISIBLE
+                viewHolder.binding.mLinear.visibility = View.GONE
                 Glide.with(context)
                     .load(message.imageUrl)
                     .placeholder(R.drawable.placeholder)
@@ -167,19 +167,19 @@ class MessageAdapter (
         }
     }
 
-    override fun getItemCount(): Int = messages.size
+    override fun getItemCount(): Int = messagesList.size
 
     inner class SentMsgHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-        var binding:SendMsgBinding= SendMsgBinding.bind(itemView)
+        var binding:SendMsgBinding = SendMsgBinding.bind(itemView)
     }
 
     inner class ReceiveMsgHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-        var binding:SendMsgBinding= SendMsgBinding.bind(itemView)
+        var binding:SendMsgBinding = SendMsgBinding.bind(itemView)
     }
 
     init {
-        if (messages != null){
-            this.messages = messages
+        if (messagesList != null){
+            this.messagesList = messagesList
         }
         this.senderRoom = senderRoom
         this.receiverRoom = receiverRoom

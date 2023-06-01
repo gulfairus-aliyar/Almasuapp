@@ -1,6 +1,7 @@
 package com.almasu.myapplication.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,16 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.almasu.myapplication.FilterUser
 import com.almasu.myapplication.R
+import com.almasu.myapplication.activities.MessageActivity
 import com.almasu.myapplication.databinding.RowUsersBinding
+import com.almasu.myapplication.fragments.ProfileFragment
+import com.almasu.myapplication.fragments.UsersFragment
 import com.almasu.myapplication.models.ModelUsers
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class AdapterUsers: RecyclerView.Adapter<AdapterUsers.UserHolder>, Filterable {
 
@@ -33,6 +40,7 @@ class AdapterUsers: RecyclerView.Adapter<AdapterUsers.UserHolder>, Filterable {
 
     private var firebaseAuth: FirebaseAuth
 
+    //constructor
     constructor(
         context: Context,
         userArrayList: ArrayList<ModelUsers>
@@ -52,29 +60,41 @@ class AdapterUsers: RecyclerView.Adapter<AdapterUsers.UserHolder>, Filterable {
     }
 
     override fun onBindViewHolder(holder: UserHolder, position: Int) {
+        //Get data, Set data, Handle clicks etc
         val modelUsers = userArrayList[position]
-        val userImage = modelUsers.profileImageUrl
+        val uid = modelUsers.uid
         val userName = modelUsers.name
         val userEmail = modelUsers.email
+        val userImage = modelUsers.profileImageUrl
+        val timestamp = modelUsers.timestamp
 
         holder.username.text = userName
         holder.emailTv.text = userEmail
+
         try {
             Glide.with(context)
                 .load(userImage)
                 .placeholder(R.drawable.ic_person)
-                .into(holder.imageIv)
-        }catch (e: Exception){
-            Log.e(TAG, "onBindViewHolder: ", e)
+                .into(binding.imageIv)
+        } catch (e: Exception) {
+            Log.e(ProfileFragment.TAG, "onDataChange: ", e)
         }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, MessageActivity::class.java)
+            intent.putExtra("uid", uid) // will be used to load request details
+            intent.putExtra("name", userName)
+            intent.putExtra("profileImage", userImage)
+            context.startActivity(intent)
+        }
+        
 
     }
-
 
     override fun getItemCount(): Int {
-        return userArrayList.size
+        return userArrayList.size //number of items in list
     }
 
+    //ViewHolder class to hold/init UI view for row_users.xml
     inner class UserHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var imageIv = binding.imageIv
         var username = binding.userNameTv

@@ -20,7 +20,7 @@
             android:background="@android:color/transparent"
             android:minHeight="48dp"
             android:padding="10dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back_white" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -82,11 +82,11 @@
         android:layout_below="@id/toolbarRl"
         android:orientation="vertical">
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/messageRv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="visible"/>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messageRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"/>
 
     </LinearLayout>
     <LinearLayout
@@ -142,7 +142,7 @@
                         android:padding="5dp"/>
 
                 </LinearLayout>
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/attachment"
                     android:src="@drawable/attach_file"
                     android:layout_weight="3"
@@ -150,20 +150,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
-                <ImageView
-                    android:id="@+id/camera"
-                    android:src="@drawable/camera"
-                    android:layout_weight="3"
-                    android:padding="9dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:tint="#5C5C5C" />
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/sendMessageIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

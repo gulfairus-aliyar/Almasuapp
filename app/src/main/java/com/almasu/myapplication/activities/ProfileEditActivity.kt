@@ -30,8 +30,8 @@ class ProfileEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileEditBinding
 
-    private companion object{
-        private const val TAG = "PROFILE_EDIT_TAG"
+    internal companion object{
+        const val TAG = "PROFILE_EDIT_TAG"
     }
 
     private lateinit var firebaseAuth: FirebaseAuth

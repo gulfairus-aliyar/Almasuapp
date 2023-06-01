@@ -12,7 +12,7 @@ class ModelAd {
     var timestamp: Long = 0
     var latitude = 0.0
     var longitude = 0.0
-    var username: String = ""
+    var userName: String = ""
     var profileImageUrl: String = ""
 
     constructor()
@@ -27,7 +27,7 @@ class ModelAd {
         timestamp: Long,
         latitude: Double,
         longitude: Double,
-        username: String,
+        userName: String,
         profileImageUrl: String
     ) {
         this.id = id
@@ -40,7 +40,7 @@ class ModelAd {
         this.timestamp = timestamp
         this.latitude = latitude
         this.longitude = longitude
-        this.username = username
+        this.userName = userName
         this.profileImageUrl = profileImageUrl
     }
 

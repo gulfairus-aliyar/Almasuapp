@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+    <!--FrameLayout: To show fragments-->
     <FrameLayout
         android:id="@+id/fragmentsFl"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         android:background="@color/teal_700"
         android:layout_above="@+id/bottomNv"/>
 
+    <!--BottomNavigationView: navigate between fragments-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNv"
         android:layout_width="match_parent"
@@ -28,6 +30,7 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_bottom" />
 
+    <!--FloatingActionButton: Open Create/Add New Ad-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exchangeFab"
         android:layout_width="wrap_content"

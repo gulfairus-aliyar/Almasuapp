@@ -2,6 +2,7 @@ package com.almasu.myapplication.models
 
 class ModelUsers {
 
+    //variables, must match as in firebase
     var uid: String = ""
     var name: String = ""
     var email: String = ""
@@ -10,8 +11,12 @@ class ModelUsers {
     var phoneNumber: String = ""
     var profileImageUrl: String = ""
     var userType: String = ""
+    var timestamp: Long = 0
 
+    //empty constructor, required by firebase
     constructor()
+
+    //parametrized constructor
     constructor(
         uid: String,
         name: String,
@@ -20,7 +25,8 @@ class ModelUsers {
         phoneCode: String,
         phoneNumber: String,
         profileImageUrl: String,
-        userType: String
+        userType: String,
+        timestamp: Long
     ) {
         this.uid = uid
         this.name = name
@@ -30,6 +36,7 @@ class ModelUsers {
         this.phoneNumber = phoneNumber
         this.profileImageUrl = profileImageUrl
         this.userType = userType
+        this.timestamp = timestamp
     }
 
 
